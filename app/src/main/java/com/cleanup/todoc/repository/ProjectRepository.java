@@ -1,11 +1,11 @@
 package com.cleanup.todoc.repository;
 
-import androidx.lifecycle.LiveData;
-
 import com.cleanup.todoc.data.ProjectDao;
 import com.cleanup.todoc.model.Project;
 
 import java.util.List;
+
+import io.reactivex.Single;
 
 public class ProjectRepository {
 
@@ -16,9 +16,7 @@ public class ProjectRepository {
         this.projectDao = projectDao;
     }
 
-    public LiveData<List<Project>> getAllProjects() {
-        return projectDao.getAll();
-    }
+    public Single<List<Project>> getAllProjects() { return projectDao.getAll(); }
 
     public static ProjectRepository getInstance(ProjectDao projectDao) {
         if(instance == null) {

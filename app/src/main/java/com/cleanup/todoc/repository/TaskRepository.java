@@ -1,11 +1,11 @@
 package com.cleanup.todoc.repository;
 
-import androidx.lifecycle.LiveData;
-
 import com.cleanup.todoc.data.TaskDao;
 import com.cleanup.todoc.model.Task;
 
 import java.util.List;
+
+import io.reactivex.Single;
 
 public class TaskRepository {
 
@@ -16,7 +16,7 @@ public class TaskRepository {
         this.taskDao = taskDao;
     }
 
-    public LiveData<List<Task>> getAllTasks() {
+    public Single<List<Task>> getAllTasks() {
         return taskDao.getAll();
     }
 

@@ -117,7 +117,7 @@ public class MainActivity extends AppCompatActivity implements TasksAdapter.Dele
                 InjectorUtils.provideTaskViewModelFactory(getApplicationContext()))
                 .get(TaskViewModel.class);
 
-        taskViewModel.getTasks().observe(this, new Observer<List<Task>>() {
+        taskViewModel.tasks().observe(this, new Observer<List<Task>>() {
             @Override
             public void onChanged(List<Task> tasksList) {
                 tasks = tasksList;
@@ -129,7 +129,7 @@ public class MainActivity extends AppCompatActivity implements TasksAdapter.Dele
                 InjectorUtils.provideProjectViewModelFactory(getApplicationContext()))
                 .get(ProjectViewModel.class);
 
-        projectViewModel.getProjects().observe(this, new Observer<List<Project>>() {
+        projectViewModel.projects().observe(this, new Observer<List<Project>>() {
             @Override
             public void onChanged(List<Project> projects) {
                 allProjects = projects.toArray(new Project[0]);
@@ -205,7 +205,7 @@ public class MainActivity extends AppCompatActivity implements TasksAdapter.Dele
             // If both project and name of the task have been set
             else if (taskProject != null) {
                 // TODO: Replace this by id of persisted task
-                long id = (long) (Math.random() * 50000);
+                long id = tasks.size();
 
                 Task task = new Task(
                         id,

@@ -14,6 +14,7 @@
         android:layout_height="wrap_content"
         android:hint="@string/task_name_hint"
         android:importantForAutofill="no"
+        android:imeOptions="actionDone"
         android:inputType="textAutoComplete"
         tools:ignore="UnusedAttribute" />
 

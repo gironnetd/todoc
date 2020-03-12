@@ -25,7 +25,7 @@ public abstract class AppDatabase extends RoomDatabase {
     public static AppDatabase database(Context context) {
         if (instance == null) {
             synchronized (LOCK) {
-                instance = Room.databaseBuilder(context, AppDatabase.class, DATABASE_NAME)
+                    instance = Room.databaseBuilder(context, AppDatabase.class, DATABASE_NAME)
                         .addCallback(new Callback() {
                             @Override
                             public void onCreate(@NonNull SupportSQLiteDatabase db) {

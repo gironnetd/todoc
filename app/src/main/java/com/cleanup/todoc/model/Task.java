@@ -3,6 +3,7 @@ package com.cleanup.todoc.model;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 import java.util.Comparator;
@@ -17,7 +18,7 @@ public class Task {
     /**
      * The unique identifier of the task
      */
-    @PrimaryKey(autoGenerate = true)
+    @PrimaryKey
     private long id;
 
     /**
@@ -38,6 +39,8 @@ public class Task {
      */
     private long creationTimestamp;
 
+    public Task() { }
+
     /**
      * Instantiates a new Task.
      *
@@ -46,11 +49,18 @@ public class Task {
      * @param name              the name of the task to set
      * @param creationTimestamp the timestamp when the task has been created to set
      */
+    @Ignore
     public Task(long id, long projectId, @NonNull String name, long creationTimestamp) {
         this.setId(id);
         this.setProjectId(projectId);
         this.setName(name);
         this.setCreationTimestamp(creationTimestamp);
+    }
+
+    @Ignore
+    public Task(long projectId, @NonNull String name) {
+        this.setProjectId(projectId);
+        this.setName(name);
     }
 
     /**
@@ -67,7 +77,7 @@ public class Task {
      *
      * @param id the unique idenifier of the task to set
      */
-    private void setId(long id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -109,7 +119,7 @@ public class Task {
      *
      * @param name the name of the task to set
      */
-    private void setName(@NonNull String name) {
+    public void setName(@NonNull String name) {
         this.name = name;
     }
 
