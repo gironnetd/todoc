@@ -1,6 +1,14 @@
 apply plugin: 'com.android.application'
 
 android {
+    signingConfigs {
+        debug {
+            storeFile file('/Users/damien/Documents/OpenClassrooms/Android/Dev_Android_2020/Délivrez une application mobile en production/todoc-master/upload-keystore.jks')
+            storePassword '050580'
+            keyAlias = 'upload'
+            keyPassword '050580'
+        }
+    }
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.cleanup.todoc"
@@ -14,6 +22,7 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.debug
         }
     }
     lintOptions {
@@ -23,14 +32,13 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    //noinspection GradleCompatible
     implementation 'androidx.appcompat:appcompat:1.1.0'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test:rules:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
-    implementation 'com.google.android.material:material:1.0.0'
+    implementation 'com.google.android.material:material:1.1.0'
 
     // Room dependencies
     implementation "androidx.room:room-runtime:$rootProject.room_version"
