@@ -1,31 +1,35 @@
 package com.cleanup.todoc.model;
 
-import android.support.annotation.ColorInt;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import androidx.annotation.ColorInt;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
 
 /**
  * <p>Models for project in which tasks are included.</p>
  *
  * @author Gaëtan HERFRAY
  */
+@Entity(tableName = "project")
 public class Project {
     /**
      * The unique identifier of the project
      */
-    private final long id;
+    @PrimaryKey(autoGenerate = true)
+    private long id;
 
     /**
      * The name of the project
      */
     @NonNull
-    private final String name;
+    private String name;
 
     /**
      * The hex (ARGB) code of the color associated to the project
      */
     @ColorInt
-    private final int color;
+    private int color;
 
     /**
      * Instantiates a new Project.
@@ -39,6 +43,8 @@ public class Project {
         this.name = name;
         this.color = color;
     }
+
+    public Project() { }
 
     /**
      * Returns all the projects of the application.
@@ -79,6 +85,10 @@ public class Project {
         return id;
     }
 
+    public void setId(long id) {
+        this.id = id;
+    }
+
     /**
      * Returns the name of the project.
      *
@@ -89,6 +99,10 @@ public class Project {
         return name;
     }
 
+    public void setName(@NonNull String name) {
+        this.name = name;
+    }
+
     /**
      * Returns the hex (ARGB) code of the color associated to the project.
      *
@@ -97,6 +111,10 @@ public class Project {
     @ColorInt
     public int getColor() {
         return color;
+    }
+
+    public void setColor(int color) {
+        this.color = color;
     }
 
     @Override
